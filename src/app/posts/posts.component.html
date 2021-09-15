@@ -8,7 +8,7 @@
 </mat-form-field>
 
 <div class="mat-elevation-z8">
-<table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]" matSort>
+<table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" [hiddenColumns]="[0]" matSort *ngIf="dataSource.data.length > 0">
 
     <ng-container matColumnDef="userId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> USERID </th>
@@ -35,6 +35,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+  <div *ngIf="dataSource.data.length === 0">No data</div>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
